@@ -12,12 +12,15 @@
 
 <script>
     const info = document.querySelector('#info');
+    info.innerHTML = "<h2>Hello</h2>";   //改DOM要效能
 
-    info.innerHTML = "<h2>Hello</h2>";
-
-    alert('hi');
+    alert('hi');  //alert('hi')雖然寫在後面，仍會優先執行，其他全部停下來
 
 </script>
 
 </body>
 </html>
+<!-- 需要花時間做某件事的時候，就需要promise -->
+<!-- 發ajax，相當於交代人幫我拿資料 -->
+<!-- fetchc後面如果有程式碼，一執行就丟出去，回來才會被呼叫 -->
+<!-- (參照0821-06) -->

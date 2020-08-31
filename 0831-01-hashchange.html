@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box {
+        width: 600px;
+        height: 1200px;
+        background-color: #9fcdff;
+    }
+
+    #info {
+        position: fixed;
+        top: 0px;
+        left: 50%;
+    }
+</style>
+
+<body>
+    <!-- 頁面內連結 -->
+    <!-- 點入不會刷新網頁 -->
+    <!-- href="# + id_name"-->
+    <!-- hash的缺點是只能帶一個字串 -->
+    <!-- hashchange是比較舊的做法 -->
+    <div id="info">
+        <a href="#aaa">aaa</a><br>
+        <a href="#bbb">bbb</a><br>
+        <a href="#ccc">ccc</a><br>
+    </div>
+    <div id="aaa" class="box">aaa</div>
+    <div id="bbb" class="box" style="background-color: #71eac6;">bbb</div>
+    <div id="ccc" class="box" style="background-color: #e393ea;">ccc</div>
+
+
+    <script>
+        window.addEventListener('hashchange', function (event) {
+            console.log(location.hash);
+        });
+
+    </script>
+
+</body>
+
+</html>
