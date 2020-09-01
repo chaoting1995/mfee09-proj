@@ -8,16 +8,20 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-
+<!-- event，事件物件，包成一個看不見的function，event是從那個物件傳過來的 -->
+<!-- 點的時候會先觸發事件，再連過去，可以加個提示窗 -->
 <body>
     <a href="https://tw.yahoo.com" onclick="func(event)">aaa</a>
     <br>
+    <!-- 假連結 -->
     <a href="javascript: func2(12)">bbb</a>
 
     <script>
+        //是從onclick="func(event)"設定過來的，func()內參數可以隨便命名
+        //但是onclick="func(event)"內的event不行隨便改
         function func(e) {
-            if (!confirm('真的要連過去嗎?')) {
-                e.preventDefault();
+            if (!confirm('真的要連過去嗎?')) {  
+                e.preventDefault();             //取消原本功能
             }
         }
         function func2(e) {

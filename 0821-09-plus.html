@@ -25,6 +25,8 @@
 
     <script>
         function doAjax() {
+            // 語法：jQuery.get( url [, data ] [, success ] [, dataType ] )Returns: jqXHR
+            // .get(傳給誰，傳什麼資料，cbf(必備，要知道何時做完)，回傳什麼資料類型)
             // 用jquery寫成物件時，會自動幫你轉成a=2&b=6
             // fetch還要自己轉a=${a1}&b=${b2}
             $.get('0821-05-plus-api.php', { a: 2, b: 6 }, function (data) {

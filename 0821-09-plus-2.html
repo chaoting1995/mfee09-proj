@@ -13,7 +13,14 @@
     <!-- JS如何拿到這個表單？ -->
     <!-- getElementById/getElementByClassName，都不能用(why？) -->
     <!-- 用querySelector('form') -->
+    <!-- 如果有第二個表單？ -->
+    <!-- querySelector('form[name=form1]') -->
+    <!-- document.form1 (why可以這樣取？？？)-->
+    <!-- document.form1.a.value (why可以這樣取？？？)-->
+
     <form name="form1" onsubmit="return false">
+        <!-- 即使有隱藏欄位，serialize()也會一併抓，顯示在Query String Parameters -->
+        <!-- name屬性必要，有設才抓的到 -->
         <input type="hidden" name="hello" value="是在哈囉">
         <input type="number" name="a"> + <input type="number" name="b">
         <button type="button" onclick="doAjax()">=</button> <span id="result"></span>
@@ -23,14 +30,15 @@
 
     <script>
         function doAjax() {
-
-            $.get('a20200821-05-plus-api.php', $(document.form1).serialize(), function (data) {
+            // JQuery特別功能：抓到表單，包成JQuery物件
+            // .serialize()方法，會自動找表單內有幾個輸入欄，不用一一設定，自動做序列化(聽不懂)
+            // 當你有10個欄位，用這個方法更方便
+            // 'json'告訴他，我回來的是json的字串，會自動做parse(解析) 
+            // 當然也還有其他方案，用POST就不需要
+            $.get('0821-05-plus-api.php', $(document.form1).serialize(), function (data) {
                 console.log(data);
                 document.querySelector('#result').innerHTML = data.answer;
-            }, 'json');   $.get('a20200821-05-plus-api.php', {a=2,b=6},function(data){
-            console.log(data);
-
-            });
+            }, 'json');
         }
 
     </script>

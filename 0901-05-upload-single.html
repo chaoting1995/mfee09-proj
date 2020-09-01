@@ -11,14 +11,14 @@
 
 <body>
     <form action="">
-        <button onclick="file_input.click()">上傳圖一</button>
-        <input type="text" name="field1">
+        <button type="button" onclick="file_input.click()">上傳圖一</button>
+        <input type="hidden" id="field1" name="field1">
         <br>
 
 
     </form>
 
-    <input type="file" id="file_input" name="file_input" style="display: none">
+    <input type="file" id="file_input"  style="display: none">
 
     <script>
         const file_input = document.querySelector('#file_input');
