@@ -21,27 +21,27 @@
         const a = document.querySelector('#a');
         const b = document.querySelector('#b');
 
+        //  發ajax，相當於交代人幫我拿資料
         function doAjax() {
             const a1 = a.value;  // 取得值，存入變數
             const b1 = b.value;  // 取得值，存入變數
             // 傳值 →用fetch，fetch的參數是(網址)
             // 預設是GET，故不用特別設
+            // fetch後面如果有程式碼，fetch一執行就丟出去，就不管，回來才會被呼叫
             fetch(`0821-05-plus-api.php?a=${a1}&b=${b1}`)
-                // callback function
+                // 不知何時才做完，故丟給一個callback function，做完就呼叫
                 .then(r => r.json())
+                // 若再return一個promise物件，r.json()的結果會丟往下個.then，形成鏈狀結構
                 .then(obj => {
                     document.querySelector('#result').innerHTML = obj.answer;
 
                     // 不做錯誤處理，先假設都對
                 });
         }
-
     </script>
-
 </body>
-
 </html>
-
+<!-- 到asyinc away才真正解決問題 -->
 
 <!-- function(r){
 return r.json(); //拿到一個promise物件
@@ -49,3 +49,11 @@ return r.json(); //拿到一個promise物件
 
 <!-- 可以改成 -->
 <!-- r => r.json()) -->
+
+
+<!-- 需要花時間做某件事的時候，就需要promise -->
+
+<!-- (參照0821-06) -->
+
+<!-- call back function，即等別人呼叫
+何時呼叫?：發生事情的時候；誰呼叫?：瀏覽器 -->

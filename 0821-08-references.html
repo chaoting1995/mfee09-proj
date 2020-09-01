@@ -8,29 +8,36 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-
+<!-- 
+    參照類型：陣列、物件
+    設值類型：數值、字串、布林值 
+-->
 <body>
 
     <script>
         const ar = [2, 4, 6, 8, { name: 'vic', age: 20 }];
-        const br = [...ar];
-        const cr = JSON.parse(JSON.stringify(ar));
+        // 做一個包了兩層的陣列
+        const br = [...ar];   
+        //淺拷貝
+        const cr = JSON.parse(JSON.stringify(ar));  
+        //深拷貝，先轉成字串，再parse回來
 
-        ar[1] = 100;
-        console.log(ar);
-        console.log(br);
-        console.log(cr);
-        console.log('----');
-        ar[4].name = 'david';
-        console.log(ar);
-        console.log(br);
-        console.log(cr);
+        ar[1] = 100;  //改動成員
+        console.log(ar);   //有改，[2, 100, 6, 8, { name: 'vic', age: 20 }];
+        console.log(br);   //沒改
+        console.log(cr);   //沒改
         console.log('----');
 
+        ar[4].name = 'david';  //改動陣列裡面的物件，好複雜(汗)
+        console.log(ar);//有改，[2, 100, 6, 8, { name: 'david', age: 20 }]; 
+        console.log(br);//有改，[2, 100, 6, 8, { name: 'david', age: 20 }];
+        //淺拷貝，拷不了參照型的物件，br、ar參照的是同一組物件
+        console.log(cr);//沒改
+        //深拷貝，裡面那層已經是不同物件，改動不互涉
+        console.log('----');
 
-
-
-
+        // 深拷例外：循環物件，拷貝會出錯!!!!!!!!!
+        
     </script>
 
 </body>
