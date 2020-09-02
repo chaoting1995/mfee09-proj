@@ -9,21 +9,22 @@
 </head>
 
 <body>
-
+    <!-- <pre>與後面標籤要緊連，不然連空白字元都會show出來 -->
 
     <div class="container">
         <div class="row">
             <div class="col">
                 <div class="alert alert-info" role="alert">
                     <pre><?php
-                            // print_r($_GET)
-                            print_r($_POST)
+                            // print_r($_GET);
+                            print_r($_POST);
                             ?></pre>
                 </div>
             </div>
         </div>
-
-
+        <!-- 傳統送出方式一定要有name -->
+        <!-- <label>的for對<input>的id -->
+        <!-- <input>裡面下disabled，不能送出、不能填寫 -->
         <div class="row">
             <div class="col-lg-6">
                 <form method="post">

@@ -24,7 +24,7 @@
         // 兩種除錯工具
 
         // r代表array
-        // 會直接輸出到面上，像console.log，用於除錯
+        // 會直接輸出到畫面上，像console.log，用於除錯
         print_r($ar2);
         print_r($ar3);
 

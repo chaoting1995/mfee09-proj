@@ -19,12 +19,12 @@
     <?php } ?>
     <br>
 
-    <!--
-    這種方法比較清楚  
+    <!-- 這種方法比較清楚 -->
+    <?php /* 
     <?php if(): ?>
     <?php else : ?>
-    <?php endif; ?> -->
-
+    <?php endif; ?> 
+    */ ?>
     <?php 
    if (!empty($_GET['age']) and  $_GET['age'] >= 18) : ?>
 

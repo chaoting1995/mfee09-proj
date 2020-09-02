@@ -2,6 +2,7 @@
 setcookie('mycookie', 2)
 ?>
 
+<!-- 設定cookie，要在html出現之前，因為cookie設定在檔頭，資料都送出    -->
 <!DOCTYPE html>
 <html lang="en">
 
