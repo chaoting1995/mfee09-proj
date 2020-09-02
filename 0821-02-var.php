@@ -23,7 +23,7 @@
     echo empty($b) ? 'empty' : 'not empty';
     echo '<br>';
 
-    // empty()判斷完，預設輸出布林值：
+    // empty()判斷完，預設輸出布林值？？？：
     // true  → 1 
     // false → 空字串
     echo !empty($b);  //空字串，看不到，所以通常不讓他直接輸出

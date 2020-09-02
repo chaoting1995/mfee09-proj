@@ -20,7 +20,7 @@
 
     <form name="form1" onsubmit="return false">
         <!-- 即使有隱藏欄位，serialize()也會一併抓，顯示在Query String Parameters -->
-        <!-- name屬性必要，有設才抓的到 -->
+        <!-- name屬性必要，有設才抓 -->
         <input type="hidden" name="hello" value="是在哈囉">
         <input type="number" name="a"> + <input type="number" name="b">
         <button type="button" onclick="doAjax()">=</button> <span id="result"></span>

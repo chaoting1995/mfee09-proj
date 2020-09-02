@@ -13,7 +13,7 @@
 
             <tr>
                 <?php for ($k = 1; $k <= 9; $k++) : ?>
-
+                    <!-- 輸出語法 -->
                     <td><?= sprintf("%s * %s = %s", $i, $k, $i * $k)  ?></td>
                 <?php endfor ?>
             </tr>
