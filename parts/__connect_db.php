@@ -22,7 +22,8 @@ $pdo_options = [
 // 「PDO::ERRMODE =>」錯誤時，要以什麼方式呈現
 //「PDO::ERRMODE_EXCEPTION,」出錯時無訊息
 // 「PDO::ATTR_DEFAULT_FETCH_MODE」取資料形式(關聯、索引式陣列)
-// 「PDO::FETCH_ASSOC,」，讀出為關聯式陣列
+// 「PDO::FETCH_ASSOC,」，php讀出，為關聯式陣列，到JS為object
+// 若設定「PDO::FETCH_NUM」，代表php讀取出，為索引式陣列(無欄位名稱)
 // 「PDO::MYSQL_ATTR_INIT_COMMAND =>」，一連線，執行什麼SQL
 
 $pdo = new PDO($dsn, $db_user, $db_pass, $pdo_options);
@@ -31,6 +32,11 @@ $pdo = new PDO($dsn, $db_user, $db_pass, $pdo_options);
 # $pdo->query("use mytest;"); // 
 
 define('WEB_ROOT', '/mfee09-proj');
+// 解決路徑問題，設定一個常數(WEB_ROOT)
+// 要發布的時候，改這行(/mfee09-proj)就好
+//【範例】參見「__html_head.php」的<link>
+// 我不管你現在的相對路徑是什麼，我設定常數，讓這個頁面每次都從「網站根目錄」開始抓，所以不管從哪個檔案把這支(__html_head.php)include進來
+// 不會因為檔案位置改變，導致原本設定的相對路徑無法獲取檔案
 
 if(!isset($_SESSION)){
     session_start();

@@ -7,6 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="<?= WEB_ROOT ?>/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="<?= WEB_ROOT ?>/fontawesome/css/all.css">
+    <!-- 這裡就能抓到我定義好的常數「WEB_ROOT」 -->
+    <!-- 不用靠相對路徑 -->
+    <!-- 也可以寫死，寫成：mfee09-proj/fontawesome/css/all.css">，但是如果發佈到server上，未必有 mfee09-proj的路徑-->
     <title><?= $page_title ?? '' ?> 通訊錄</title>
     <!-- 如果有，就顯示，沒有就顯示空字串 -->
 </head>

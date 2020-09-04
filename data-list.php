@@ -9,6 +9,7 @@ $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
 
 $t_sql = "SELECT COUNT(1) FROM `address_book`";
 $totalRows = $pdo->query($t_sql)->fetch(PDO::FETCH_NUM)[0];
+// 若設定「PDO::FETCH_NUM」，代表php讀取出，為索引式陣列(無欄位名稱)
 // die('~~~'); //exit; // 結束程式
 $totalPages = ceil($totalRows / $perPage);
 
@@ -23,17 +24,23 @@ if ($totalRows > 0) {
         exit;
     };
 
+    // 取資料
     $sql = sprintf("SELECT * FROM `address_book` ORDER BY sid DESC LIMIT %s, %s", ($page - 1) * $perPage, $perPage);
     $stmt = $pdo->query($sql);
     $rows = $stmt->fetchAll();
+    // 「$rows = $pdo->query($sql)->fetchAll()」，是個array
 }
 # 正規表示式
 // https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Guide/Regular_Expressions
+
+// 拿資料(controllor)，處理邏輯的程式，全部寫在html的前面
+// 下面html只做資料呈現(veiw)(MVC設計模式)
 ?>
 <?php require __DIR__ . '/parts/__html_head.php'; ?>
 <?php include __DIR__ . '/parts/__navbar.php'; ?>
 <div class="container">
     <div class="row">
+        
         <div class="col d-flex justify-content-end">
             <nav aria-label="Page navigation example">
                 <ul class="pagination">
@@ -61,9 +68,10 @@ if ($totalRows > 0) {
         </div>
     </div>
 
-
+    <!-- bootstrap，套表格樣式 -->
     <table class="table table-striped">
         <!-- `sid`, `name`, `email`, `mobile`, `birthday`, `address`, `created_at` -->
+        <!-- 拷貝欄位名稱，放這裡取用 -->
         <thead>
             <tr>
                 <th scope="col"><i class="fas fa-trash-alt"></i></th>
@@ -74,14 +82,19 @@ if ($totalRows > 0) {
                 <th scope="col">手機</th>
                 <th scope="col">生日</th>
                 <th scope="col">地址</th>
+                <!-- 建立時間 -->
                 <th scope="col"><i class="fas fa-edit"></i></th>
             </tr>
         </thead>
         <tbody>
+            <!-- php foreach在這裡開始 -->
+            <!-- 用foreach輸出陣列$rows 到<td> -->
+            <!-- $rows這一個個項目，會丟到這裡$r -->
             <?php foreach ($rows as $r) : ?>
                 <tr>
                     <td><a href="data-delete.php?sid=<?= $r['sid'] ?>" onclick="ifDel(event)" data-sid="<?= $r['sid'] ?>">
                             <i class="fas fa-trash-alt"></i>
+                            <!-- 放一個垃圾桶icon -->
                         </a></td>
                     <td><a href="javascript:delete_it(<?= $r['sid'] ?>)">
                             <i class="fas fa-user-times"></i>
@@ -91,12 +104,14 @@ if ($totalRows > 0) {
                     <td><?= $r['email'] ?></td>
                     <td><?= $r['mobile'] ?></td>
                     <td><?= $r['birthday'] ?></td>
+                    <!-- 為什麼是$r[]，不是$rows[]?????????????????????????????????????????? -->
                     <!--
             <td><?= strip_tags($r['address']) ?></td>
             -->
                     <td><?= htmlentities($r['address']) ?></td>
                     <td><a href="#"><i class="fas fa-edit"></i></a></td>
                 </tr>
+                <!-- php foreach結束在這裡 -->
             <?php endforeach; ?>
         </tbody>
     </table>

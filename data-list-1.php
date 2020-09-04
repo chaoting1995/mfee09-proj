@@ -3,7 +3,7 @@ $page_title = '資料列表';
 require __DIR__ . '/parts/__connect_db.php';
 
 $stmt = $pdo->query("SELECT * FROM `address_book` LIMIT 5");
-
+// 不要fetch
 ?>
 <?php require __DIR__ . '/parts/__html_head.php'; ?>
 <?php include __DIR__ . '/parts/__navbar.php'; ?>
@@ -22,7 +22,11 @@ $stmt = $pdo->query("SELECT * FROM `address_book` LIMIT 5");
             </tr>
         </thead>
         <tbody>
+            <!-- 了解一下不同寫法 -->
             <?php while ($r = $stmt->fetch()) : ?>
+                <!-- 若有取到東西，即true -->
+                <!-- 若沒取到東西，即false，結束 -->
+                <!-- 缺點：拿完就沒有了，不便於重複使用 -->
                 <tr>
                     <td><?= $r['sid'] ?></td>
                     <td><?= $r['name'] ?></td>

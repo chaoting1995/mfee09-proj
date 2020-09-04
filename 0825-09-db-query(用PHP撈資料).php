@@ -20,4 +20,5 @@ echo json_encode($stmt->fetchAll(), JSON_UNESCAPED_UNICODE);
 
 // echo json_encode($stmt->fetchAll(PDO::FETCH_NUM), JSON_UNESCAPED_UNICODE);  // 索引式陣列
 // echo json_encode($stmt->fetchAll(PDO::FETCH_BOTH), JSON_UNESCAPED_UNICODE); // 給兩種: 索引式 + 關聯式
+// 會有索引，也有關聯，兩個都出現
 
