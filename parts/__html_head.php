@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="<?= WEB_ROOT ?>/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="<?= WEB_ROOT ?>/fontawesome/css/all.css">
     <title><?= $page_title ?? '' ?> 通訊錄</title>
+    <!-- 如果有，就顯示，沒有就顯示空字串 -->
 </head>
 
 <body>
