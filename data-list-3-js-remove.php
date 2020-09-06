@@ -66,3 +66,8 @@ $rows = $stmt->fetchAll();
     })
 </script>
 <?php include __DIR__ . '/parts/__html_foot.php'; ?>
+
+<!-- document.querySelectorAll得NodeList -->
+<!-- NodeList才需要用trashes.forEach() -->
+<!-- document.querySelector得element -->
+<!-- element可以直接addEventListener() -->

@@ -35,6 +35,7 @@ $rows = $stmt->fetchAll();
             <?php foreach ($rows as $r) : ?>
                 <tr>
                     <td><a href="javascript:" onclick="trashHandler(event)"><i class="fas fa-trash-alt my-trash-i"></i></a></td>
+                    <!-- 示範，改成用<a>來包也可以，只是比較沒有彈性 -->
                     <td><?= $r['sid'] ?></td>
                     <td><?= $r['name'] ?></td>
                     <td><?= $r['email'] ?></td>
@@ -49,7 +50,10 @@ $rows = $stmt->fetchAll();
 
 </div>
 <?php include __DIR__ . '/parts/__scripts.php'; ?>
-<script>
+<script>  
+// 就不用querySelectorAll
+// 也不用forEach()
+
     const trashHandler = (event) => {
         const t = event.target;
         const tr = t.closest('tr');

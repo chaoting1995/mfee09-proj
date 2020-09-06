@@ -10,7 +10,7 @@ $stmt = $pdo->query("SELECT * FROM `address_book` LIMIT 5");
 // 「stmt」代理人，當變數，接收結果
 
 echo json_encode($stmt->fetchAll(), JSON_UNESCAPED_UNICODE);
-// $stmt->fetchAll()，告訴他我要讀取幾筆，fetchAll()，即拿到全部
+// $stmt->fetchAll()，拿到的資料：告訴他我要讀取幾筆，fetchAll()，即拿到全部
 // fetchAll()會回傳array
 // json_encode()，轉成JSON
 // JSON_UNESCAPED_UNICODE，中文不要跳脫

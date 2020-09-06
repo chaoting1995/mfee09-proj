@@ -51,28 +51,31 @@ $rows = $stmt->fetchAll();
 <?php include __DIR__ . '/parts/__scripts.php'; ?>
 <script>
     const table = document.querySelector('table');
-
+    // 取得table節點
     table.addEventListener('click', (event) => {
+    // 聽整個table
         const t = event.target;
+        // event.target，點選到誰就是誰
         console.log(t.classList.contains('my-trash-i'));
-
+        // 測試用
         if (t.classList.contains('my-trash-i')) {
             t.closest('tr').remove();
+        // 判斷陣列中有沒有「包含」('my-trash-i')，回傳布林值
         }
     })
 
     /*
     table.addEventListener('click', (event)=>{
         const t = event.target;
-        //console.log(t.classList);
+        //console.log(t.classList);   //測試用
 
-        const ar = [...t.classList];
+        const ar = [...t.classList];  //轉成array
 
         // -1 表示找不到
         console.log(ar.indexOf('my-trash-i'));
 
         // 如果有找到
-        if(ar.indexOf('my-trash-i') !== -1){
+        if(ar.indexOf('my-trash-i') !== -1){  //判斷陣列中有沒有my-trash-i
             t.closest('tr').remove();
         }
 

@@ -9,5 +9,5 @@ if (empty($_GET['sid'])) {
 }
 $sid = intval($_GET['sid']) ?? 0;
 
-$pdo->query("DELETE FROM address_book WHERE sid=$sid ");
+$pdo->query("DELETE FROM address_book WHERE sid=$sid");
 header('Location: ' . $referer);
